@@ -8,24 +8,26 @@ import java.util.Stack;
  *
  * @author Ishika Agarwal, 2021
  */
-public class ReverseStack {
+public final class ReverseStack {
+    private ReverseStack() {
+    }
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the number of elements you wish to insert in the stack");
-        int n = sc.nextInt();
-        int i;
-        Stack<Integer> stack = new Stack<Integer>();
-        System.out.println("Enter the stack elements");
-        for (i = 0; i < n; i++) {
-            stack.push(sc.nextInt());
-        }
-        sc.close();
-        reverseStack(stack);
-        System.out.println("The reversed stack is:");
-        while (!stack.isEmpty()) {
-            System.out.print(stack.peek() + ",");
-            stack.pop();
+        try (Scanner sc = new Scanner(System.in)) {
+            System.out.println("Enter the number of elements you wish to insert in the stack");
+            int n = sc.nextInt();
+            int i;
+            Stack<Integer> stack = new Stack<Integer>();
+            System.out.println("Enter the stack elements");
+            for (i = 0; i < n; i++) {
+                stack.push(sc.nextInt());
+            }
+            reverseStack(stack);
+            System.out.println("The reversed stack is:");
+            while (!stack.isEmpty()) {
+                System.out.print(stack.peek() + ",");
+                stack.pop();
+            }
         }
     }
 
@@ -48,16 +50,15 @@ public class ReverseStack {
 
     private static void insertAtBottom(Stack<Integer> stack, int element) {
         if (stack.isEmpty()) {
-            // When stack is empty, insert the element so it will be present at the bottom of the
-            // stack
+            // When stack is empty, insert the element so it will be present at
+            // the bottom of the stack
             stack.push(element);
             return;
         }
 
         int ele = stack.peek();
-        /*Keep popping elements till stack becomes empty. Push the elements once the topmost element
-           has moved to the bottom of the stack.
-         */
+        // Keep popping elements till stack becomes empty. Push the elements
+        // once the topmost element has moved to the bottom of the stack.
         stack.pop();
         insertAtBottom(stack, element);
 

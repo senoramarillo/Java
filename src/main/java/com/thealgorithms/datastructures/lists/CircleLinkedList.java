@@ -2,7 +2,7 @@ package com.thealgorithms.datastructures.lists;
 
 public class CircleLinkedList<E> {
 
-    private static class Node<E> {
+    private static final class Node<E> {
 
         Node<E> next;
         E value;
@@ -53,7 +53,7 @@ public class CircleLinkedList<E> {
 
     // utility function for traversing the list
     public String toString() {
-        Node p = head.next;
+        Node<E> p = head.next;
         String s = "[ ";
         while (p != head) {
             s += p.value;
@@ -91,7 +91,7 @@ public class CircleLinkedList<E> {
     }
 
     public static void main(String[] args) {
-        CircleLinkedList cl = new CircleLinkedList<String>();
+        CircleLinkedList<Integer> cl = new CircleLinkedList<>();
         cl.append(12);
         System.out.println(cl);
         cl.append(23);
